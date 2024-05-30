@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://1bk8eq6w84q3"]
+
+[ext_resource type="Script" path="res://Characters/Player.gd" id="1_6g7jj"]
+[ext_resource type="Texture2D" uid="uid://ekas6hsee2b3" path="res://Art/nightraiderfixed.png" id="3_4kp2e"]
+[ext_resource type="PackedScene" uid="uid://cjppr73m1ch13" path="res://Characters/health_bar.tscn" id="3_or7jm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hdexd"]
+radius = 26.3059
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsk1w"]
+size = Vector2(77.25, 49.75)
+
+[sub_resource type="Animation" id="Animation_8hbiy"]
+resource_name = "Blink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.9001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.00392157), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1r1c"]
+_data = {
+"Blink": SubResource("Animation_8hbiy")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1lk0p"]
+polygon = PackedVector2Array(-21, 4.99992, -19, -6.87798e-05, -21, -5.00008, -33, -8.00012, -34, -13.0001, -13.9999, -16.0001, -15.9999, -23.0001, 35, -5.99987, 23, -4.99992, 22, 4.00008, 35, 6.00013, 26, 12.0001, 7.99996, 12, -14.0001, 23.9999, -15.0001, 14.9999, -23.0001, 14.9999, -24, 11.9999, -34, 10.9999, -34, 6.99988)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 2
+script = ExtResource("1_6g7jj")
+health = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_4kp2e")
+
+[node name="ShootingPoint" type="Marker2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(103.333, 0)
+rotation = 0.0243335
+
+[node name="Shadow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-5.00006, 15)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_4kp2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hdexd")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xsk1w")
+
+[node name="FireDelayTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="HealthBar" parent="." instance=ExtResource("3_or7jm")]
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h1r1c")
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_1lk0p")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

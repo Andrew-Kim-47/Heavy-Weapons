@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjppr73m1ch13"]
+
+[ext_resource type="Texture2D" uid="uid://xfyv5k3rn4rw" path="res://Art/Progress_under-1.png.png" id="1_wwbr0"]
+[ext_resource type="Texture2D" uid="uid://n7v14k8ruc4" path="res://Art/Progress_progress-1.png.png" id="2_owrp5"]
+[ext_resource type="Script" path="res://Characters/HealthBar.gd" id="3_imkub"]
+
+[node name="HealthBar" type="TextureProgressBar"]
+visible = false
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.9998
+offset_top = -61.0001
+offset_right = 20.0002
+offset_bottom = -21.0001
+grow_horizontal = 2
+rotation = 1.5708
+pivot_offset = Vector2(20, 61)
+size_flags_vertical = 4
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_wwbr0")
+texture_progress = ExtResource("2_owrp5")
+script = ExtResource("3_imkub")

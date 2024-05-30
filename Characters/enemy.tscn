@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://7m6te8rx3guo"]
+
+[ext_resource type="Script" path="res://Characters/enemy.gd" id="1_3uoen"]
+[ext_resource type="Texture2D" uid="uid://dy6xm6meatayq" path="res://Art/warrior2.png" id="1_jysbr"]
+[ext_resource type="PackedScene" uid="uid://cjppr73m1ch13" path="res://Characters/health_bar.tscn" id="3_v0kv5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3t276"]
+size = Vector2(50.7188, 33.4688)
+
+[node name="Enemy" type="CharacterBody2D"]
+z_index = 2
+script = ExtResource("1_3uoen")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_jysbr")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.359375, 0.265625)
+shape = SubResource("RectangleShape2D_3t276")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_v0kv5")]
+offset_left = -20.0
+offset_right = 20.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
