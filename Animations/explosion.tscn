@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0ukcm6eiuha7"]
+
+[ext_resource type="Script" path="res://Animations/Explosion.gd" id="1_qhgkv"]
+[ext_resource type="Texture2D" uid="uid://b776xddqxct5r" path="res://Art/Explosion.png" id="2_pxia8"]
+
+[sub_resource type="Animation" id="Animation_cu3tx"]
+resource_name = "Shrink"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s2cft"]
+_data = {
+"Shrink": SubResource("Animation_cu3tx")
+}
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_qhgkv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_pxia8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s2cft")
+}

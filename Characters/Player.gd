@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var move_speed : float = 300
 @export var fire_delay : float = 0.1
 @export var health = 1
-var weapon_for_values = preload("res://Weapons/shot.tscn").instantiate()
+var weapon_for_values = preload("res://Weapons/boomerang.tscn").instantiate()
 var on_cooldown = false
 var hurt = false
 
@@ -29,7 +29,7 @@ func _physics_process(_delta):
 	
 
 func shoot():
-	var weapon = preload("res://Weapons/shot.tscn").instantiate()
+	var weapon = preload("res://Weapons/boomerang.tscn").instantiate()
 	weapon.global_position = %ShootingPoint.global_position
 	weapon.rotation = rotation
 	get_parent().add_child(weapon)

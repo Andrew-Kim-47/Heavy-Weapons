@@ -1,10 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://bedp5r1dsvuo4"]
+[gd_scene load_steps=11 format=3 uid="uid://bedp5r1dsvuo4"]
 
 [ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="1_l7fy3"]
 [ext_resource type="Script" path="res://Levels/map.gd" id="1_pm4jm"]
 [ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_pd7dm"]
 [ext_resource type="Texture2D" uid="uid://cdcwib1tt1ysk" path="res://Art/3425081.jpg" id="3_42yf4"]
-[ext_resource type="Shader" path="res://Characters/Player.gdshader" id="5_4ekbj"]
+[ext_resource type="PackedScene" uid="uid://7m6te8rx3guo" path="res://Characters/enemy.tscn" id="6_y6mvl"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_l5dat"]
+vertices = PackedVector2Array(765, 511, -747, 492, -764, -510, 798, -513)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-757, 502, -775, -520, 809, -524, 775, 522)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cgap7"]
 distance = -531.0
@@ -18,20 +24,12 @@ distance = -2.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gi161"]
 distance = -751.0
 
-[sub_resource type="Gradient" id="Gradient_i2610"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lrsr8"]
-gradient = SubResource("Gradient_i2610")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1tbg"]
-shader = ExtResource("5_4ekbj")
-shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/angle = 360.0
-shader_parameter/max_dist = 32.584
-shader_parameter/gradientTexture = SubResource("GradientTexture2D_lrsr8")
-
-[node name="Map" type="Node2D"]
+[node name="map" type="Node2D"]
 script = ExtResource("1_pm4jm")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_l5dat")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -80,18 +78,10 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_gi161")
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4096.0
 autostart = true
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
-position = Vector2(-241, -774)
-max_distance = 60.0
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
-z_index = 2
-material = SubResource("ShaderMaterial_e1tbg")
-polygon = PackedVector2Array(-750, -500, 750, -500, 750, 500, -750, 500)
+[node name="Enemy" parent="." instance=ExtResource("6_y6mvl")]
+position = Vector2(76, 92)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

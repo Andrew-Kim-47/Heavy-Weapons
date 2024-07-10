@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var player = get_node("Player")
 var enemies_killed = 0
-var enemy_quota = 1
+var enemy_quota = 100
 var cash = 0
 var is_ending = false
 
@@ -34,6 +34,7 @@ func _on_spawn_timer_timeout():
 	for n in randi_range(4,6):
 		var enemy = load("res://Characters/enemy.tscn").instantiate()
 		enemy.position = new_pos
+		enemy.speed = randi_range(80, 120)
 		add_child(enemy)
 		await get_tree().create_timer(0.5).timeout
 	portal.shrink()
