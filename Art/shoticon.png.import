@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ekas6hsee2b3"
-path="res://.godot/imported/nightraiderfixed.png-c71eea237c27319b866fcf7f2e3cc75f.ctex"
+uid="uid://bassy7ajukf7p"
+path="res://.godot/imported/shoticon.png-9da32b142eb54de735f0c826e6a06e9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/nightraiderfixed.png"
-dest_files=["res://.godot/imported/nightraiderfixed.png-c71eea237c27319b866fcf7f2e3cc75f.ctex"]
+source_file="res://Art/shoticon.png"
+dest_files=["res://.godot/imported/shoticon.png-9da32b142eb54de735f0c826e6a06e9f.ctex"]
 
 [params]
 

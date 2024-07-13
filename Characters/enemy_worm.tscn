@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4bftr33jwm8e"]
 
-[ext_resource type="Script" path="res://enemy_worm.gd" id="1_cocud"]
+[ext_resource type="Script" path="res://Characters/enemy_worm.gd" id="1_cocud"]
 [ext_resource type="Texture2D" uid="uid://uphkdjgn5biy" path="res://Art/Worm.png" id="2_gfiwx"]
 [ext_resource type="PackedScene" uid="uid://cjppr73m1ch13" path="res://Characters/health_bar.tscn" id="3_w2ycm"]
 
@@ -55,5 +55,6 @@ shape = SubResource("RectangleShape2D_daglc")
 [node name="HealthBar" parent="." groups=["Enemy"] instance=ExtResource("3_w2ycm")]
 offset_left = -20.0
 offset_right = 20.0
+scale = Vector2(0.8, 0.8)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

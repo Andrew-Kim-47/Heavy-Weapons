@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtha7lfy1wvpw"]
+[gd_scene load_steps=7 format=3 uid="uid://dtha7lfy1wvpw"]
 
 [ext_resource type="Script" path="res://Levels/finish_screen.gd" id="1_r3pm4"]
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="2_1iiet"]
+[ext_resource type="FontFile" uid="uid://dumevycwlhthc" path="res://Art/FuturisticArmour-1p84.ttf" id="3_jdsf7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02fqt"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.466667, 0.827451, 0.929412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v424v"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_f78xb"]
+Button/styles/hover = SubResource("StyleBoxFlat_02fqt")
+Button/styles/normal = SubResource("StyleBoxFlat_v424v")
+Button/styles/pressed = SubResource("StyleBoxFlat_02fqt")
 
 [node name="Finish_screen" type="Control"]
 layout_mode = 3
@@ -19,14 +43,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1iiet")
+expand_mode = 1
+
 [node name="Totals" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
+offset_top = 37.0
 offset_right = 20.0
-offset_bottom = 23.0
+offset_bottom = 60.0
 grow_horizontal = 2
 uppercase = true
 
@@ -38,11 +73,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -78.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.611765, 0.611765, 1)
+theme_override_fonts/font = ExtResource("3_jdsf7")
+theme_override_font_sizes/font_size = 50
 uppercase = true
 
 [node name="Level_stats" type="Label" parent="Panel"]
@@ -53,24 +91,28 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -23.0
+offset_top = -148.0
 offset_right = 20.0
+offset_bottom = -125.0
 grow_horizontal = 2
 grow_vertical = 0
 uppercase = true
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="Continue" type="Button" parent="Panel"]
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 3
 anchor_left = 1.0
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -4.0
-offset_bottom = 4.0
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -48.0
+offset_right = -27.0
+offset_bottom = -27.0
 grow_horizontal = 0
-grow_vertical = 2
-text = "Retry"
+grow_vertical = 0
+theme = SubResource("Theme_f78xb")
+theme_override_fonts/font = ExtResource("3_jdsf7")
+text = "Continue"
 
-[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Continue" to="." method="_on_button_pressed"]

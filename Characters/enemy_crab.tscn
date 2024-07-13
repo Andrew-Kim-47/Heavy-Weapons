@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://tx1c58k3cefi"]
+
+[ext_resource type="Texture2D" uid="uid://csg7led1j7367" path="res://Art/enemy_crab.png" id="1_k0njt"]
+[ext_resource type="Script" path="res://Characters/enemy_crab.gd" id="1_vhtcy"]
+
+[node name="Enemy_crab" type="CharacterBody2D"]
+script = ExtResource("1_vhtcy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("1_k0njt")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("1_k0njt")
+
+[node name="GetNextSpotTimer" type="Timer" parent="."]
+wait_time = 0.291
+autostart = true
+
+[connection signal="timeout" from="GetNextSpotTimer" to="." method="_on_get_next_spot_timer_timeout"]

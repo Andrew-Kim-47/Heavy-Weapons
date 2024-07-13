@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://7jn0l128gix2"]
 
-[ext_resource type="Texture2D" uid="uid://cdcwib1tt1ysk" path="res://Art/3425081.jpg" id="1_8on1c"]
 [ext_resource type="Script" path="res://Levels/stage_3.gd" id="1_whndh"]
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="2_6c6j3"]
 [ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_lq04c"]
 [ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="3_asiqa"]
 
@@ -46,7 +46,7 @@ offset_bottom = 1500.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_8on1c")
+texture = ExtResource("2_6c6j3")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -81,8 +81,8 @@ shape = SubResource("WorldBoundaryShape2D_xxs3t")
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_kvs8x")
 
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.383
+[node name="WormSpawnTimer" type="Timer" parent="."]
+wait_time = 1.316
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -95,4 +95,9 @@ position = Vector2(590.366, -278.868)
 progress = 2401.14
 rotates = false
 
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[node name="BigSpawnTimer" type="Timer" parent="."]
+wait_time = 2.612
+autostart = true
+
+[connection signal="timeout" from="WormSpawnTimer" to="." method="_on_worm_spawn_timer_timeout"]
+[connection signal="timeout" from="BigSpawnTimer" to="." method="_on_big_spawn_timer_timeout"]

@@ -4,7 +4,7 @@ class_name Weapon extends Area2D
 @export var damage = 75
 var travelled_distance = 0
 const RANGE = 700
-var direction
+var direction 
 var cooldown_ = 3
 var recharge_speed
 var full_recharge_speed

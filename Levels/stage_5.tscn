@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmwuv5u01qw7q"]
+
+[ext_resource type="Script" path="res://Levels/stage_5.gd" id="1_mkj03"]
+[ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_b14ha"]
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="2_t8oc6"]
+[ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="3_gla3r"]
+[ext_resource type="PackedScene" uid="uid://tx1c58k3cefi" path="res://Characters/enemy_crab.tscn" id="5_w26qh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lh7cb"]
+distance = -531.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8wswb"]
+distance = -501.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dvxg7"]
+distance = -2.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rc338"]
+distance = -751.0
+
+[node name="Stage 5" type="Node2D"]
+script = ExtResource("1_mkj03")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -500.0
+offset_right = 2250.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_t8oc6")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_b14ha")]
+
+[node name="Player" parent="." instance=ExtResource("3_gla3r")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.7, 0.7)
+limit_left = -750
+limit_top = -500
+limit_right = 750
+limit_bottom = 500
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-221, 52)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_lh7cb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_8wswb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -500)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_dvxg7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_rc338")
+
+[node name="Enemy_crab" parent="." instance=ExtResource("5_w26qh")]
+position = Vector2(71, 88)
+
+[node name="CrabSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="CrabSpawnTimer" to="." method="_on_crab_spawn_timer_timeout"]

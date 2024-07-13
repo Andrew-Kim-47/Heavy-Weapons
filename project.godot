@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Heavy Weapons"
-run/main_scene="res://Levels/map.tscn"
+run/main_scene="res://Levels/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,7 +21,10 @@ Singleton="*res://Singleton.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/stretch/scale=2.0
 
 [input]

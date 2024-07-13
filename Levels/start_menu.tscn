@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk3iq64n1vpg0"]
+[gd_scene load_steps=8 format=3 uid="uid://bk3iq64n1vpg0"]
 
 [ext_resource type="Script" path="res://Levels/start_menu.gd" id="1_ustsf"]
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="2_tejh1"]
+[ext_resource type="FontFile" uid="uid://dumevycwlhthc" path="res://Art/FuturisticArmour-1p84.ttf" id="3_nssoj"]
+[ext_resource type="ButtonGroup" uid="uid://uhcaq1apsqg8" path="res://Levels/menu_button_group.tres" id="4_x7udc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j116w"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.466667, 0.827451, 0.929412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8p5x"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_55ytk"]
+Button/styles/hover = SubResource("StyleBoxFlat_j116w")
+Button/styles/normal = SubResource("StyleBoxFlat_n8p5x")
+Button/styles/pressed = SubResource("StyleBoxFlat_j116w")
 
 [node name="Start menu" type="Control"]
 layout_mode = 3
@@ -12,6 +37,16 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_ustsf")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tejh1")
+expand_mode = 1
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -19,14 +54,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -155.5
-offset_top = -250.0
-offset_right = 155.5
-offset_bottom = -150.0
+offset_left = -99.5
+offset_top = -172.5
+offset_right = 99.5
+offset_bottom = 172.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0.611765, 0.611765, 1)
+theme_override_fonts/normal_font = ExtResource("3_nssoj")
 bbcode_enabled = true
-text = "[center] Level 1[/center]"
+text = "[center] Choose a Level[/center]"
+fit_content = true
+
+[node name="Shop" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -10.5
+offset_bottom = 10.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_55ytk")
+theme_override_fonts/font = ExtResource("3_nssoj")
+text = "Shop"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -34,32 +88,605 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -304.0
+offset_top = -136.0
 grow_horizontal = 2
 grow_vertical = 0
 columns = 15
 
-[node name="Stage 1" type="Button" parent="GridContainer"]
+[node name="stage_1" type="Button" parent="GridContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("4_x7udc")
 text = "1"
 
-[node name="Stage 2" type="Button" parent="GridContainer"]
+[node name="stage_2" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("4_x7udc")
 text = "2"
 
-[node name="Stage 3" type="Button" parent="GridContainer"]
+[node name="stage_3" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("4_x7udc")
 text = "3"
 
-[node name="Stage 4" type="Button" parent="GridContainer"]
+[node name="stage_4" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("4_x7udc")
 text = "4"
 
-[connection signal="pressed" from="GridContainer/Stage 1" to="." method="_on_stage_1_pressed"]
-[connection signal="pressed" from="GridContainer/Stage 2" to="." method="_on_stage_2_pressed"]
-[connection signal="pressed" from="GridContainer/Stage 3" to="." method="_on_stage_3_pressed"]
-[connection signal="pressed" from="GridContainer/Stage 4" to="." method="_on_stage_4_pressed"]
+[node name="stage_5" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("4_x7udc")
+text = "5"
+
+[node name="stage_6" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "6"
+
+[node name="stage_7" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "7"
+
+[node name="stage_8" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "8"
+
+[node name="stage_9" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "9"
+
+[node name="stage_10" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "10"
+
+[node name="stage_11" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "11"
+
+[node name="stage_12" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "12"
+
+[node name="stage_13" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "13"
+
+[node name="stage_14" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "14"
+
+[node name="stage_15" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "15"
+
+[node name="stage_16" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "16"
+
+[node name="stage_17" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "17"
+
+[node name="stage_18" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "18"
+
+[node name="stage_19" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "19"
+
+[node name="stage_20" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "20"
+
+[node name="stage_21" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "21"
+
+[node name="stage_22" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "22"
+
+[node name="stage_23" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "23"
+
+[node name="stage_24" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "24"
+
+[node name="stage_25" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "25"
+
+[node name="stage_26" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "26"
+
+[node name="stage_27" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "27"
+
+[node name="stage_28" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "28"
+
+[node name="stage_29" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "29"
+
+[node name="stage_30" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "30"
+
+[node name="stage_31" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "31"
+
+[node name="stage_32" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "32"
+
+[node name="stage_33" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "33"
+
+[node name="stage_34" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "34"
+
+[node name="stage_35" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "35"
+
+[node name="stage_36" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "36"
+
+[node name="stage_37" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "37"
+
+[node name="stage_38" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "38"
+
+[node name="stage_39" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "39"
+
+[node name="stage_40" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "40"
+
+[node name="stage_41" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "41"
+
+[node name="stage_42" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "42"
+
+[node name="stage_43" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "43"
+
+[node name="stage_44" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "44"
+
+[node name="stage_45" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "45"
+
+[node name="stage_46" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "46"
+
+[node name="stage_47" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "47"
+
+[node name="stage_48" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "48"
+
+[node name="stage_49" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "49"
+
+[node name="stage_50" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "50"
+
+[node name="stage_51" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "51"
+
+[node name="stage_52" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "52"
+
+[node name="stage_53" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "53"
+
+[node name="stage_54" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "54"
+
+[node name="stage_55" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "55"
+
+[node name="stage_56" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "56"
+
+[node name="stage_57" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "57"
+
+[node name="stage_58" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "58"
+
+[node name="stage_59" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "59"
+
+[node name="stage_60" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+button_group = ExtResource("4_x7udc")
+text = "60"
+
+[connection signal="pressed" from="Shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="GridContainer/stage_1" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_2" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_3" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_4" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_5" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_6" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_7" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_8" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_9" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_10" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_11" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_12" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_13" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_14" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_15" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_16" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_17" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_18" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_19" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_20" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_21" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_22" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_23" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_24" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_25" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_26" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_27" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_28" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_29" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_30" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_31" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_32" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_33" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_34" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_35" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_36" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_37" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_38" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_39" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_40" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_41" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_42" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_43" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_44" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_45" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_46" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_47" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_48" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_49" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_50" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_51" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_52" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_53" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_54" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_55" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_56" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_57" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_58" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_59" to="." method="on_button_press"]
+[connection signal="pressed" from="GridContainer/stage_60" to="." method="on_button_press"]

@@ -17,9 +17,10 @@ var just_hit = false
 
 func _ready():
 	radius = position.distance_to(player.position) / 2
-	velocity = Vector2.LEFT * speed
 
 func _physics_process(delta):
+	$Shadow.global_position = global_position + Vector2(0, 15)
+	$Shadow.rotation = 0
 	#velocity = (player.position - position).normalized() * speed
 	#move_and_slide()
 	#look_at(player.position)
@@ -33,7 +34,6 @@ func _physics_process(delta):
 		$Timer.start()
 		time = 0
 	if !just_hit:
-		print("no")
 		var next_pos = bezier(time)
 		look_at(next_pos)
 		velocity = position.direction_to(next_pos) * speed

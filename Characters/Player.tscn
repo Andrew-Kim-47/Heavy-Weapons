@@ -8,7 +8,7 @@
 radius = 26.3059
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsk1w"]
-size = Vector2(77.25, 49.75)
+size = Vector2(28, 30)
 
 [sub_resource type="Animation" id="Animation_8hbiy"]
 resource_name = "Blink"
@@ -33,7 +33,6 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
 script = ExtResource("1_6g7jj")
-health = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -58,6 +57,7 @@ shape = SubResource("CircleShape2D_hdexd")
 [node name="Area2D" type="Area2D" parent="." groups=["Player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_xsk1w")
 
 [node name="FireDelayTimer" type="Timer" parent="."]

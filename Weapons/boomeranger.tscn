@@ -1,24 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfyaa04omtuu3"]
 
-[ext_resource type="Script" path="res://Weapons/boomerang.gd" id="1_fba8u"]
-[ext_resource type="Texture2D" uid="uid://5y0vl58353lt" path="res://Art/Boomerang.png" id="2_m2xdl"]
+[ext_resource type="Script" path="res://Weapons/boomerang.gd" id="1_l3qeh"]
+[ext_resource type="Texture2D" uid="uid://5y0vl58353lt" path="res://Art/Boomerang.png" id="2_vs0bj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3bp4i"]
 radius = 7.0
 height = 38.0
 
-[node name="Boomerang" type="Area2D" groups=["Weapon"]]
+[node name="Boomeranger" type="Area2D" groups=["Weapon"]]
 z_index = 2
 position = Vector2(0, 1)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_fba8u")
+script = ExtResource("1_l3qeh")
 
 [node name="Art" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 rotation = 1.5708
 scale = Vector2(2, 2)
-texture = ExtResource("2_m2xdl")
+texture = ExtResource("2_vs0bj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

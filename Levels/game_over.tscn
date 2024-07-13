@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://lcpa3bacpshj"]
+[gd_scene load_steps=7 format=3 uid="uid://lcpa3bacpshj"]
 
 [ext_resource type="Script" path="res://Levels/game_over.gd" id="1_cnowh"]
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="2_76w7e"]
+[ext_resource type="FontFile" uid="uid://dumevycwlhthc" path="res://Art/FuturisticArmour-1p84.ttf" id="2_cv6kb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m85rp"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.466667, 0.827451, 0.929412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kah3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_4au6c"]
+Button/styles/hover = SubResource("StyleBoxFlat_m85rp")
+Button/styles/normal = SubResource("StyleBoxFlat_3kah3")
+Button/styles/pressed = SubResource("StyleBoxFlat_m85rp")
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -19,15 +43,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_76w7e")
+expand_mode = 1
+
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -43.5
-offset_right = 43.5
-offset_bottom = 23.0
+anchor_bottom = 0.5
+offset_left = -138.5
+offset_top = -104.0
+offset_right = 138.5
+offset_bottom = -58.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.611765, 0.611765, 1)
+theme_override_fonts/font = ExtResource("2_cv6kb")
+theme_override_font_sizes/font_size = 50
 text = "Game Over"
 
 [node name="Continue" type="Button" parent="Panel"]
@@ -37,13 +78,18 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -79.0
-offset_top = -31.0
+offset_left = -106.0
+offset_top = -48.0
+offset_right = -27.0
+offset_bottom = -27.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = SubResource("Theme_4au6c")
+theme_override_fonts/font = ExtResource("2_cv6kb")
 text = "Continue"
 
 [node name="Quit" type="Button" parent="Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -52,3 +98,5 @@ offset_top = -31.0
 offset_right = 42.0
 grow_vertical = 0
 text = "Quit"
+
+[connection signal="pressed" from="Panel/Continue" to="." method="_on_continue_pressed"]

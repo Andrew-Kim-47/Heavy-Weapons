@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://y821cipkmwwe"]
+
+[ext_resource type="Script" path="res://Characters/enemy_tie.gd" id="1_f0rpe"]
+[ext_resource type="Texture2D" uid="uid://58e6xmqckm1v" path="res://Art/enemy_tie.png" id="1_srvt0"]
+[ext_resource type="PackedScene" uid="uid://cjppr73m1ch13" path="res://Characters/health_bar.tscn" id="2_2fya2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjgyt"]
+size = Vector2(25, 25)
+
+[node name="Enemy_tie" type="CharacterBody2D"]
+script = ExtResource("1_f0rpe")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_2fya2")]
+offset_left = -10.0
+offset_top = -62.0
+offset_right = 30.0
+offset_bottom = -22.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("1_srvt0")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("1_srvt0")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_cjgyt")
+
+[node name="ChangeDirectionTimer" type="Timer" parent="."]
+wait_time = 1.142
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]

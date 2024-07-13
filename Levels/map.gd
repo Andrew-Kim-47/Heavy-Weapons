@@ -1,4 +1,4 @@
-extends Node2D
+class_name Map extends Node2D
 
 @onready var player = get_node("Player")
 var enemies_killed = 0
@@ -16,11 +16,15 @@ func _process(delta):
 		Singleton.add_kills(enemies_killed)
 		Singleton.level_kills = enemies_killed
 		Singleton.level_cash = cash
-		get_tree().change_scene_to_file("res://Levels/finish_screen.tscn")
+		get_tree().change_scene_to_file("res://Levels/shop.tscn")
 		
 		
 
 func _on_spawn_timer_timeout():
+	spawn_enemy("res://Characters/enemy.tscn")
+	
+	
+func spawn_enemy(enemy_type):
 	var player_position = player.position
 	var portal = load("res://Animations/portal.tscn").instantiate()
 	var randx = randf_range(-get_viewport_rect().size[0] / 2, get_viewport_rect().size[0] / 2)
@@ -32,7 +36,7 @@ func _on_spawn_timer_timeout():
 	add_child(portal)
 	await get_tree().create_timer(1).timeout
 	for n in randi_range(4,6):
-		var enemy = load("res://Characters/enemy.tscn").instantiate()
+		var enemy = load(enemy_type).instantiate()
 		enemy.position = new_pos
 		enemy.speed = randi_range(80, 120)
 		add_child(enemy)

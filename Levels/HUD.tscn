@@ -1,12 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ssaw34y4v1lr"]
+[gd_scene load_steps=7 format=3 uid="uid://ssaw34y4v1lr"]
 
 [ext_resource type="Script" path="res://Levels/HUD.gd" id="1_gn04n"]
 [ext_resource type="Texture2D" uid="uid://xfyv5k3rn4rw" path="res://Art/Progress_under-1.png.png" id="1_gr4vn"]
+[ext_resource type="Texture2D" uid="uid://bassy7ajukf7p" path="res://Art/shoticon.png" id="2_4njc2"]
 [ext_resource type="Texture2D" uid="uid://n7v14k8ruc4" path="res://Art/Progress_progress-1.png.png" id="2_ohljw"]
 [ext_resource type="Script" path="res://Characters/WeaponStamina.gd" id="3_lcevv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kimgo"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="FontFile" uid="uid://dumevycwlhthc" path="res://Art/FuturisticArmour-1p84.ttf" id="3_xjy0e"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -17,34 +16,64 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gn04n")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0.603922)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -25.0
-offset_right = 600.0
+offset_top = -35.0
+grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="Weapon1" type="Panel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(100, 25)
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Weapon1bar" type="ColorRect" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Weapon1icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_4njc2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_kimgo")
 
-[node name="WeaponStamina" type="TextureProgressBar" parent="HBoxContainer/Weapon1"]
+[node name="Weapon1name" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -0.5
-offset_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_xjy0e")
+theme_override_font_sizes/normal_font_size = 12
+text = "Shot"
+
+[node name="WeaponStamina" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+size_flags_vertical = 3
 step = 0.3
 value = 99.9
 nine_patch_stretch = true
@@ -52,9 +81,98 @@ texture_under = ExtResource("1_gr4vn")
 texture_progress = ExtResource("2_ohljw")
 script = ExtResource("3_lcevv")
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Weapon2bar" type="ColorRect" parent="HBoxContainer/VBoxContainer2"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Weapon2icon" type="TextureRect" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_4njc2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Weapon2name" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_xjy0e")
+theme_override_font_sizes/normal_font_size = 12
+text = "Shot"
+
+[node name="WeaponStamina" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+size_flags_vertical = 3
+step = 0.3
+value = 99.9
+nine_patch_stretch = true
+texture_under = ExtResource("1_gr4vn")
+texture_progress = ExtResource("2_ohljw")
+script = ExtResource("3_lcevv")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Weapon3bar" type="ColorRect" parent="HBoxContainer/VBoxContainer3"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Weapon3icon" type="TextureRect" parent="HBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_4njc2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Weapon3name" type="RichTextLabel" parent="HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_xjy0e")
+theme_override_font_sizes/normal_font_size = 12
+text = "Shot"
+
+[node name="WeaponStamina" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+size_flags_vertical = 3
+step = 0.3
+value = 99.9
+nine_patch_stretch = true
+texture_under = ExtResource("1_gr4vn")
+texture_progress = ExtResource("2_ohljw")
+script = ExtResource("3_lcevv")
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="Score" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
 text = "Kills:

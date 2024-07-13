@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bedp5r1dsvuo4"]
 
-[ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="1_l7fy3"]
-[ext_resource type="Script" path="res://Levels/map.gd" id="1_pm4jm"]
-[ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_pd7dm"]
-[ext_resource type="Texture2D" uid="uid://cdcwib1tt1ysk" path="res://Art/3425081.jpg" id="3_42yf4"]
-[ext_resource type="PackedScene" uid="uid://7m6te8rx3guo" path="res://Characters/enemy.tscn" id="6_y6mvl"]
+[ext_resource type="Script" path="res://Levels/map.gd" id="1_o86m3"]
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="2_c8obl"]
+[ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="3_u4800"]
+[ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="4_oun4a"]
+[ext_resource type="PackedScene" uid="uid://7m6te8rx3guo" path="res://Characters/enemy.tscn" id="5_snowb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l5dat"]
 vertices = PackedVector2Array(765, 511, -747, 492, -764, -510, 798, -513)
@@ -24,8 +24,8 @@ distance = -2.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gi161"]
 distance = -751.0
 
-[node name="map" type="Node2D"]
-script = ExtResource("1_pm4jm")
+[node name="Stage_1" type="Node2D"]
+script = ExtResource("1_o86m3")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
@@ -42,14 +42,14 @@ offset_bottom = 1500.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_42yf4")
+texture = ExtResource("2_c8obl")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_pd7dm")]
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_u4800")]
 
-[node name="Player" parent="." instance=ExtResource("1_l7fy3")]
+[node name="Player" parent="." instance=ExtResource("4_oun4a")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.7, 0.7)
@@ -78,10 +78,10 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_gi161")
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 4096.0
+wait_time = 3.0
 autostart = true
 
-[node name="Enemy" parent="." instance=ExtResource("6_y6mvl")]
+[node name="Enemy" parent="." instance=ExtResource("5_snowb")]
 position = Vector2(76, 92)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
