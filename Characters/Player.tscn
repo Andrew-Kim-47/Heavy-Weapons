@@ -42,7 +42,7 @@ texture = ExtResource("2_k0l1y")
 
 [node name="ShootingPoint" type="Marker2D" parent="Sprite2D"]
 unique_name_in_owner = true
-position = Vector2(40, -4.76837e-06)
+position = Vector2(23.3333, -4.76837e-06)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -64,7 +64,7 @@ shape = SubResource("RectangleShape2D_xsk1w")
 unique_name_in_owner = true
 one_shot = true
 
-[node name="HealthBar" parent="." groups=["Player"] instance=ExtResource("3_or7jm")]
+[node name="HealthBar" parent="." groups=["Player_health"] instance=ExtResource("3_or7jm")]
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
 unique_name_in_owner = true

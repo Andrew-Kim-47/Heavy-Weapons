@@ -1,28 +1,24 @@
-extends Area2D
+extends Weapon
 
-
-@export var speed = 400
-@export var damage = 75
-var travelled_distance = 0
-const RANGE = 900
-var direction
-var cooldown_ = 3
-var recharge_speed
-var full_recharge_speed
-var fire_delay = 0.07
-var used = false #Boolean to make sure only one enemy gets hit
 
 enum State {Throw, Return, Loose}
 var state
 var acceleration = 170
 
-func _ready():
-	direction = Vector2.RIGHT.rotated(rotation)
+func _init():
 	state = State.Throw
+	cooldown_step_size = 0.4
+	full_recharge_speed = 0.35
+	recharge_speed = 0.35
+	fire_delay = 0.07
+	range = 900
+	damage = 150
+	max_damage = damage
+	speed = 400
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
+func _physics_process(delta):
+	$AnimationPlayer.play("Spin")
 	if state == State.Throw:
 		speed -= acceleration * delta
 		position += direction * speed * delta
@@ -37,6 +33,6 @@ func _process(delta):
 		position += direction * speed * delta
 		travelled_distance += speed * delta
 	
-	if travelled_distance > RANGE:
+	if travelled_distance > range:
 		queue_free()
 	

@@ -12,5 +12,5 @@ func update():
 
 func _physics_process(delta):
 	rotation = -get_parent().rotation
-	if value < 30 and is_in_group("Player"):
+	if value < 30 and is_in_group("Player_health"):
 		visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ssaw34y4v1lr"]
+[gd_scene load_steps=9 format=3 uid="uid://ssaw34y4v1lr"]
 
 [ext_resource type="Script" path="res://Levels/HUD.gd" id="1_gn04n"]
 [ext_resource type="Texture2D" uid="uid://xfyv5k3rn4rw" path="res://Art/Progress_under-1.png.png" id="1_gr4vn"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://n7v14k8ruc4" path="res://Art/Progress_progress-1.png.png" id="2_ohljw"]
 [ext_resource type="Script" path="res://Characters/WeaponStamina.gd" id="3_lcevv"]
 [ext_resource type="FontFile" uid="uid://dumevycwlhthc" path="res://Art/FuturisticArmour-1p84.ttf" id="3_xjy0e"]
+[ext_resource type="Texture2D" uid="uid://5y0vl58353lt" path="res://Art/Boomerang.png" id="7_sd5qu"]
+[ext_resource type="Texture2D" uid="uid://sa3ghl051eda" path="res://Art/diagonals.png" id="8_ic3we"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -15,6 +17,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gn04n")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -144.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_xjy0e")
+bbcode_enabled = true
+text = "[center]Enemy quota destroyed
+Double points and cash
+
+Level ends in 5 seconds"
+fit_content = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(0, 0, 0, 0.603922)
@@ -39,29 +61,31 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Weapon1Container" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="Weapon1bar" type="ColorRect" parent="HBoxContainer/VBoxContainer"]
+[node name="Weapon1bar" type="ColorRect" parent="HBoxContainer/Weapon1Container"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Weapon1Container"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="Weapon1icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Weapon1icon" type="TextureRect" parent="HBoxContainer/Weapon1Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("2_4njc2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Weapon1Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Weapon1name" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Weapon1name" type="RichTextLabel" parent="HBoxContainer/Weapon1Container/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -69,7 +93,7 @@ theme_override_fonts/normal_font = ExtResource("3_xjy0e")
 theme_override_font_sizes/normal_font_size = 12
 text = "Shot"
 
-[node name="WeaponStamina" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Weapon1Stamina" type="TextureProgressBar" parent="HBoxContainer/Weapon1Container/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 15)
 layout_mode = 2
@@ -81,38 +105,42 @@ texture_under = ExtResource("1_gr4vn")
 texture_progress = ExtResource("2_ohljw")
 script = ExtResource("3_lcevv")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Weapon2Container" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 clip_contents = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="Weapon2bar" type="ColorRect" parent="HBoxContainer/VBoxContainer2"]
+[node name="Weapon2bar" type="ColorRect" parent="HBoxContainer/Weapon2Container"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Weapon2Container"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="Weapon2icon" type="TextureRect" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="Weapon2icon" type="TextureRect" parent="HBoxContainer/Weapon2Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("2_4njc2")
+texture = ExtResource("7_sd5qu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Weapon2Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Weapon2name" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+[node name="Weapon2name" type="RichTextLabel" parent="HBoxContainer/Weapon2Container/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_xjy0e")
 theme_override_font_sizes/normal_font_size = 12
 text = "Shot"
 
-[node name="WeaponStamina" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+[node name="Weapon2Stamina" type="TextureProgressBar" parent="HBoxContainer/Weapon2Container/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 15)
 layout_mode = 2
 size_flags_vertical = 3
@@ -123,38 +151,42 @@ texture_under = ExtResource("1_gr4vn")
 texture_progress = ExtResource("2_ohljw")
 script = ExtResource("3_lcevv")
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Weapon3Container" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 clip_contents = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="Weapon3bar" type="ColorRect" parent="HBoxContainer/VBoxContainer3"]
+[node name="Weapon3bar" type="ColorRect" parent="HBoxContainer/Weapon3Container"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Weapon3Container"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="Weapon3icon" type="TextureRect" parent="HBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="Weapon3icon" type="TextureRect" parent="HBoxContainer/Weapon3Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("2_4njc2")
+texture = ExtResource("8_ic3we")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Weapon3Container/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Weapon3name" type="RichTextLabel" parent="HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+[node name="Weapon3name" type="RichTextLabel" parent="HBoxContainer/Weapon3Container/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_xjy0e")
 theme_override_font_sizes/normal_font_size = 12
 text = "Shot"
 
-[node name="WeaponStamina" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+[node name="Weapon3Stamina" type="TextureProgressBar" parent="HBoxContainer/Weapon3Container/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 15)
 layout_mode = 2
 size_flags_vertical = 3
@@ -177,3 +209,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 7
 text = "Kills:
 Cash:"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl710763gehwp"]
+
+[ext_resource type="Script" path="res://Weapons/spiraller.gd" id="1_53c1n"]
+[ext_resource type="Texture2D" uid="uid://we6mdu4woca7" path="res://Art/spiraller.png" id="1_bb3r6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oqaoq"]
+radius = 14.0357
+
+[node name="spiraller" type="Area2D" groups=["Spiraller", "Straight", "Weapon"]]
+z_index = 2
+script = ExtResource("1_53c1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bb3r6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oqaoq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.005
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

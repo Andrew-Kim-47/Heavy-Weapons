@@ -2,9 +2,13 @@ class_name Map extends Node2D
 
 @onready var player = get_node("Player")
 var enemies_killed = 0
-var enemy_quota = 100
+var enemy_quota = 50
 var cash = 0
 var is_ending = false
+
+var homing_target
+var shortest_distance = 1280
+
 
 func _process(delta):
 	if enemies_killed >= enemy_quota and !is_ending:
@@ -16,9 +20,18 @@ func _process(delta):
 		Singleton.add_kills(enemies_killed)
 		Singleton.level_kills = enemies_killed
 		Singleton.level_cash = cash
-		get_tree().change_scene_to_file("res://Levels/shop.tscn")
+		Singleton.current_level = name.split("_")[1]
+		get_tree().change_scene_to_file("res://Levels/finish_screen.tscn")
 		
-		
+	for enemy in get_tree().get_nodes_in_group("Enemy_target"):
+		var distance = enemy.position.distance_to(get_viewport().get_mouse_position())
+		if distance < shortest_distance:
+			homing_target = enemy
+			shortest_distance = distance
+			
+	
+	if homing_target == null:
+		shortest_distance = 1280
 
 func _on_spawn_timer_timeout():
 	spawn_enemy("res://Characters/enemy.tscn")

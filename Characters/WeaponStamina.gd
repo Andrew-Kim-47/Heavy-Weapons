@@ -1,23 +1,30 @@
 extends TextureProgressBar
 
 var weapon_on_cooldown = false
+var weapon
+var in_use = false
+var use_up = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if value == max_value:
 		weapon_on_cooldown = false
 		tint_progress = Color(1,1,1,1)
+		
 	if value == 0 or weapon_on_cooldown:
+		use_up = false
 		tint_progress = Color(255,0,0,1)
 		weapon_on_cooldown = true
-		value += step * 1.5
-	elif Input.is_action_pressed("left_click"):
-		value -= step
+		value += weapon.full_recharge_speed
+	elif use_up or (Input.is_action_pressed("left_click") and in_use):
+		value -= weapon.cooldown_step_size
 	else:
-		value += step
+		value += weapon.recharge_speed
+		
 		

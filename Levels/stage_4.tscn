@@ -17,7 +17,7 @@ distance = -2.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xgep5"]
 distance = -751.0
 
-[node name="Stage 4" type="Node2D"]
+[node name="Stage_4" type="Node2D"]
 script = ExtResource("1_h483i")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -55,6 +55,7 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_uu5y0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -50)
 shape = SubResource("WorldBoundaryShape2D_3om8i")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -67,7 +68,7 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_xgep5")
 
 [node name="TieSpawnTimer" type="Timer" parent="."]
-wait_time = 1.946
+wait_time = 7.591
 autostart = true
 
 [connection signal="timeout" from="TieSpawnTimer" to="." method="_on_tie_spawn_timer_timeout"]

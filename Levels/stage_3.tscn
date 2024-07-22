@@ -29,7 +29,7 @@ _data = {
 }
 point_count = 5
 
-[node name="Stage 3" type="Node2D"]
+[node name="Stage_3" type="Node2D"]
 script = ExtResource("1_whndh")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -70,6 +70,7 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_xby5k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -50)
 shape = SubResource("WorldBoundaryShape2D_bnjja")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]

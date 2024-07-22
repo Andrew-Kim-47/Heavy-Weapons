@@ -10,7 +10,6 @@
 script = ExtResource("1_0ng87")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_g4p3u")]
-visible = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2

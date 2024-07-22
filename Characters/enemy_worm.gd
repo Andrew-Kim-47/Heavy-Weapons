@@ -6,7 +6,7 @@ const SPEED = 50
 
 
 func _ready():
-	health = 200
+	health = 300
 	$HealthBar.max_value = 200
 
 func _physics_process(delta):

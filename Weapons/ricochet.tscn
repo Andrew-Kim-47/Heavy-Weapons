@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxbk43qc20ur6"]
+
+[ext_resource type="Script" path="res://Weapons/ricochet.gd" id="1_6k7ku"]
+[ext_resource type="Texture2D" uid="uid://bep6ekd52g008" path="res://Art/ricochet.png" id="1_pqtmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xht4"]
+size = Vector2(22, 4)
+
+[node name="ricochet" type="Area2D" groups=["Straight", "Weapon"]]
+z_index = 2
+script = ExtResource("1_6k7ku")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_pqtmi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2xht4")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -10)
+target_position = Vector2(0, 20)
+collide_with_areas = true

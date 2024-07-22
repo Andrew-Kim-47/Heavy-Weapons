@@ -1,0 +1,215 @@
+[gd_scene load_steps=4 format=3 uid="uid://0kwpjifgs2dr"]
+
+[ext_resource type="Texture2D" uid="uid://l64ippkmfxaq" path="res://Art/spliner.png" id="1_csedh"]
+[ext_resource type="Script" path="res://Weapons/spliner.gd" id="1_kwtk4"]
+[ext_resource type="Script" path="res://Weapons/spliner_link.gd" id="3_dpi44"]
+
+[node name="spliner" type="Area2D" groups=["Single", "Weapon"]]
+z_index = 2
+script = ExtResource("1_kwtk4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D2/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D3/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D4" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D4"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D4/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D5" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D5"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D5/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D6" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D6"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D6/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D7" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D7"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D7/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D8" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D8"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D8/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D9" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D9"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D9/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D10" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D10"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D10/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D11" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D11"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D11/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D12" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D12"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D12/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D13" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D13"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D13/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D14" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D14"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D14/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D15" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D15"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D15/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D16" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D16"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D16/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D17" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D17"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D17/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D18" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D18"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D18/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D19" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D19"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D19/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Sprite2D20" type="Sprite2D" parent="." groups=["Link"]]
+texture = ExtResource("1_csedh")
+script = ExtResource("3_dpi44")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D20"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D20/Area2D"]
+polygon = PackedVector2Array(-16, -5, -8, -13, 8, -13, 16, -5, 16, 5, 8, 13, -8, 13, -16, 6)
+
+[node name="Timer" type="Timer" parent="Sprite2D20"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D2/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D3/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D4/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D5/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D6/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D7/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D8/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D9/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D10/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D11/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D12/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D13/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D14/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D15/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D16/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D17/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D18/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D19/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D20/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Sprite2D20/Timer" to="." method="_on_timer_timeout"]

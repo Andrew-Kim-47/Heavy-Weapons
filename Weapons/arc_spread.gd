@@ -1,5 +1,6 @@
 extends Weapon
 
+
 func _init():
 	speed = 600
 	cooldown_step_size = 0.5

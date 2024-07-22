@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh7p2ybw1kls8"]
+
+[ext_resource type="Texture2D" uid="uid://b1imrqbx3r32k" path="res://Art/4_homings.png" id="1_8yxvt"]
+[ext_resource type="Script" path="res://Weapons/4_homings.gd" id="1_wnx8m"]
+
+[node name="4_homings" type="Area2D" groups=["Sides", "Weapon"]]
+script = ExtResource("1_wnx8m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_8yxvt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+polygon = PackedVector2Array(-1, -16, -7, -5, -4, -1, -4, 4, -6, 6, -6, 16, 6, 16, 6, 6, 4, 4, 4, -1, 7, -4, 1, -16)

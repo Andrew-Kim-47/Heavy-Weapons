@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ra6guewdw4ny"]
+
+[ext_resource type="Texture2D" uid="uid://nldewy4jimmx" path="res://Art/arc_spread.png" id="1_j7tpr"]
+[ext_resource type="Script" path="res://Weapons/arc_spread.gd" id="1_ooqeq"]
+
+[node name="arc_spread" type="Area2D" groups=["Spread", "Weapon"]]
+z_index = 2
+script = ExtResource("1_ooqeq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j7tpr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 16, 8, 0, 0, -16)

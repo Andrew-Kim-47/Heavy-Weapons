@@ -6,11 +6,13 @@
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_o0d8k"]
 points = PackedVector2Array(0, -17, 13, 16, -13, 16)
 
-[node name="diagonals" type="Area2D"]
+[node name="diagonals" type="Area2D" groups=["Diagonal", "Weapon"]]
+z_index = 2
 script = ExtResource("1_lc83u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wpwf0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("ConvexPolygonShape2D_o0d8k")
