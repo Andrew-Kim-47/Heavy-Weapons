@@ -9,6 +9,7 @@ var is_ending = false
 var homing_target
 var shortest_distance = 1280
 
+var slow_time = false
 
 func _process(delta):
 	if enemies_killed >= enemy_quota and !is_ending:
@@ -51,7 +52,6 @@ func spawn_enemy(enemy_type):
 	for n in randi_range(4,6):
 		var enemy = load(enemy_type).instantiate()
 		enemy.position = new_pos
-		enemy.speed = randi_range(80, 120)
 		add_child(enemy)
 		await get_tree().create_timer(0.5).timeout
 	portal.shrink()

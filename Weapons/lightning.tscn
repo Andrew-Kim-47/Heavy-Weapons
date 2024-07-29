@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://ca0xpxgw0i644"]
+
+[ext_resource type="Texture2D" uid="uid://cum7xxhmgsryo" path="res://Art/lightning.png" id="1_hibgv"]
+[ext_resource type="Script" path="res://Weapons/lightning.gd" id="1_vfkqk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y11y0"]
+atlas = ExtResource("1_hibgv")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh6yd"]
+atlas = ExtResource("1_hibgv")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8437x"]
+atlas = ExtResource("1_hibgv")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llypa"]
+atlas = ExtResource("1_hibgv")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_758r5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y11y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh6yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8437x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llypa")
+}],
+"loop": true,
+"name": &"Firing",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu4n5"]
+size = Vector2(535, 20)
+
+[node name="lightning" type="Area2D" groups=["Lightning", "Weapon"]]
+z_index = 2
+script = ExtResource("1_vfkqk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.1, 1)
+sprite_frames = SubResource("SpriteFrames_758r5")
+animation = &"Firing"
+frame_progress = 0.872409
+offset = Vector2(128, 0)
+
+[node name="CollisionShape1" type="CollisionShape2D" parent="."]
+position = Vector2(266.5, 0)
+shape = SubResource("RectangleShape2D_uu4n5")
+
+[node name="change_rotation_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="change_rotation_timer" to="." method="_on_change_rotation_timer_timeout"]

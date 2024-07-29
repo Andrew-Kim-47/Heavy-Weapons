@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5cgnpjfonph6"]
+
+[ext_resource type="Script" path="res://Weapons/energy_homers.gd" id="1_p5kc4"]
+[ext_resource type="Texture2D" uid="uid://dx1pvxg7fevs2" path="res://Art/energy_homers.png" id="1_pqigt"]
+
+[node name="energy_homers" type="Area2D" groups=["Spread", "Weapon"]]
+z_index = 2
+script = ExtResource("1_p5kc4")
+speed = null
+damage = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_pqigt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(19, 0, 9, 6, 2, 6, -3, 12, -10, 12, -10, 5, -13, 5, -19, 9, -19, -9, -13, -5, -10, -5, -10, -12, -4, -12, 1, -6, 10, -6)

@@ -7,7 +7,8 @@ var drop = preload("res://Characters/small_drop.tscn").instantiate()
 var explosion = preload("res://Animations/explosion.tscn").instantiate()
 var max_health = 100
 var health = max_health
-var speed = 100
+var original_speed
+var speed = randi_range(80, 120)
 var player_position
 var damage = 15
 signal health_changed
@@ -19,6 +20,9 @@ var just_hit = false
 
 func _ready():
 	radius = position.distance_to(player.position) / 2
+	original_speed = speed
+	if map.slow_time:
+		slow_time()
 
 func _physics_process(delta):
 	$Shadow.global_position = global_position + Vector2(0, 15)
@@ -74,6 +78,12 @@ func take_damage(damage):
 		get_parent().add_child(explosion)
 		get_parent().kill_enemy()
 		queue_free()
+	
+func slow_time():
+	speed = speed * 0.2
+	
+func reset_time():
+	speed = original_speed
 	
 
 func _on_area_2d_area_entered(area):

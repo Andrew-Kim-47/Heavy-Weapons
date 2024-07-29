@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlw5i2q82s42"]
+
+[ext_resource type="Script" path="res://Weapons/shortshield.gd" id="1_2e0vj"]
+[ext_resource type="Texture2D" uid="uid://xukfekmq258t" path="res://Art/shortshield.png" id="1_v6m2i"]
+
+[node name="shortshield" type="Area2D" groups=["Shortshield", "Weapon"]]
+script = ExtResource("1_2e0vj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.35)
+texture = ExtResource("1_v6m2i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, -17, -12, 17, 12, 0)

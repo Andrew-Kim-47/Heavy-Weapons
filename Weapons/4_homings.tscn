@@ -4,7 +4,10 @@
 [ext_resource type="Script" path="res://Weapons/4_homings.gd" id="1_wnx8m"]
 
 [node name="4_homings" type="Area2D" groups=["Sides", "Weapon"]]
+z_index = 2
 script = ExtResource("1_wnx8m")
+speed = null
+damage = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)

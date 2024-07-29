@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://l7i6guwx4v2a"]
+
+[ext_resource type="Texture2D" uid="uid://bd8bqaa1qyjfi" path="res://Art/squarestep.png" id="1_835wg"]
+[ext_resource type="Script" path="res://Weapons/squarestep.gd" id="1_sify5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8poh"]
+size = Vector2(38.5, 19)
+
+[node name="squarestep" type="Area2D" groups=["Straight", "Weapon"]]
+script = ExtResource("1_sify5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 0.8)
+texture = ExtResource("1_835wg")
+
+[node name="change_direction_timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 0)
+shape = SubResource("RectangleShape2D_j8poh")
+
+[connection signal="timeout" from="change_direction_timer" to="." method="_on_change_direction_timer_timeout"]

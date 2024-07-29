@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://wt0e7bxcuumt"]
+
+[ext_resource type="Script" path="res://Weapons/big_laser.gd" id="1_8udfo"]
+[ext_resource type="Texture2D" uid="uid://c1pcujnxa4do1" path="res://Art/big_laser.png" id="1_vuh6g"]
+
+[node name="big_laser" type="Area2D" groups=["Big Laser", "Weapon"]]
+script = ExtResource("1_8udfo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_vuh6g")
+offset = Vector2(500, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(12, -34, -5, 0, 10, 42, 505, 59, 507, -57)

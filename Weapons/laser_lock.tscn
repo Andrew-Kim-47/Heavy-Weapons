@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgamjhcbbvgpa"]
+
+[ext_resource type="Script" path="res://Weapons/laser_lock.gd" id="1_ljjux"]
+[ext_resource type="Texture2D" uid="uid://cpbb0xwggtt6j" path="res://Art/laser_lock.png" id="1_v76gb"]
+
+[node name="laser_lock" type="Area2D" groups=["Straight", "Weapon"]]
+z_index = 2
+script = ExtResource("1_ljjux")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 1)
+texture = ExtResource("1_v76gb")
+offset = Vector2(600, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

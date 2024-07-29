@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvjxossxnsjte"]
+
+[ext_resource type="Script" path="res://Weapons/reverse_cannon.gd" id="1_ad4tw"]
+[ext_resource type="Texture2D" uid="uid://cri1st4yxioqj" path="res://Art/reverse_cannon.png" id="1_byurh"]
+
+[node name="reverse_cannon" type="Area2D" groups=["Reverse", "Weapon"]]
+z_index = 2
+script = ExtResource("1_ad4tw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_byurh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.7, 0.7)
+polygon = PackedVector2Array(-16, -4, 3, -16, 16, 0, 2, 16, -16, 4)

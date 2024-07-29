@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbnbsihqm52tg"]
+
+[ext_resource type="Texture2D" uid="uid://c8qj0uh5rco61" path="res://Art/bfg.png" id="1_h3jwq"]
+[ext_resource type="Script" path="res://Weapons/bfg.gd" id="1_h8rqq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i0eia"]
+radius = 48.0
+
+[sub_resource type="Animation" id="Animation_ke08p"]
+resource_name = "Grow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(1.3, 1.3)]
+}
+
+[sub_resource type="Animation" id="Animation_exhan"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a55jc"]
+_data = {
+"Grow": SubResource("Animation_ke08p"),
+"RESET": SubResource("Animation_exhan")
+}
+
+[node name="bfg" type="Area2D" groups=["Single", "Weapon"]]
+z_index = 2
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_h8rqq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h3jwq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -4)
+shape = SubResource("CircleShape2D_i0eia")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a55jc")
+}

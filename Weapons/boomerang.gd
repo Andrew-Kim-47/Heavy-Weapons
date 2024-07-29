@@ -8,8 +8,8 @@ var acceleration = 170
 func _init():
 	state = State.Throw
 	cooldown_step_size = 0.4
-	full_recharge_speed = 0.35
-	recharge_speed = 0.35
+	full_recharge_speed = 0.3
+	recharge_speed = 0.2 # bar stops working when recharge speed is 0.2 or less, recharge speed is slower than 0.2
 	fire_delay = 0.07
 	range = 900
 	damage = 150

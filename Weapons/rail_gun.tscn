@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfo1gtirxlj5c"]
+
+[ext_resource type="Texture2D" uid="uid://dohpxj14lq0x1" path="res://Art/rail test.png" id="1_des78"]
+[ext_resource type="Script" path="res://Weapons/rail_gun.gd" id="1_mk6s7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs0h5"]
+atlas = ExtResource("1_des78")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnbb8"]
+atlas = ExtResource("1_des78")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y35xm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs0h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnbb8")
+}],
+"loop": true,
+"name": &"Firing",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxar6"]
+size = Vector2(387, 10)
+
+[node name="rail_gun" type="Area2D" groups=["Rail", "Weapon"]]
+script = ExtResource("1_mk6s7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(63, 2)
+sprite_frames = SubResource("SpriteFrames_y35xm")
+animation = &"Firing"
+frame_progress = 0.48222
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(193, 1)
+sprite_frames = SubResource("SpriteFrames_y35xm")
+animation = &"Firing"
+frame_progress = 0.48222
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(322, 2)
+sprite_frames = SubResource("SpriteFrames_y35xm")
+animation = &"Firing"
+frame_progress = 0.48222
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(192.5, 1)
+shape = SubResource("RectangleShape2D_dxar6")

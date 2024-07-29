@@ -6,7 +6,7 @@ var time = 0
 
 func _init():
 	speed = 900
-	cooldown_step_size = 0.2
+	cooldown_step_size = 0.1
 	recharge_speed = 0.3
 	full_recharge_speed = 0.4
 	fire_delay = 0.05
