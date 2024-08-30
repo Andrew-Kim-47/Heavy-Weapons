@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://db58gykyk0smr"]
+[gd_scene load_steps=10 format=3 uid="uid://db58gykyk0smr"]
 
 [ext_resource type="Script" path="res://Levels/Stage_2.gd" id="1_acpqn"]
 [ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="2_1ehm0"]
 [ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="3_ls7xg"]
 [ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="4_p00g1"]
+[ext_resource type="PackedScene" uid="uid://cjbrhedi0ni5i" path="res://Characters/turret.tscn" id="5_jkr7v"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ks2ui"]
 distance = -531.0
@@ -39,6 +40,7 @@ expand_mode = 1
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_ls7xg")]
 
 [node name="Player" parent="." instance=ExtResource("4_p00g1")]
+modulate = Color(1, 1, 1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.7, 0.7)
@@ -74,6 +76,9 @@ autostart = true
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 4.023
 autostart = true
+
+[node name="Turret" parent="." instance=ExtResource("5_jkr7v")]
+position = Vector2(-27, 90)
 
 [connection signal="timeout" from="BigSpawnTimer" to="." method="_on_big_spawn_timer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

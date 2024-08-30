@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var move_speed : float = 300
 @export var fire_delay : float = 0.1
 @export var health = 100
+var max_health = health
 
 var weapon1_path = "res://Weapons/" + Singleton.weapon1 + ".tscn"
 var weapon2_path = "res://Weapons/" + Singleton.weapon2 + ".tscn"
@@ -136,7 +137,7 @@ func take_damage(damage):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Enemy") and !hurt:
-		take_damage(area.get_parent().damage) # Replace with function body.
+		take_damage(15) # Replace with function body.
 
 
 func _on_invincibility_timer_timeout():

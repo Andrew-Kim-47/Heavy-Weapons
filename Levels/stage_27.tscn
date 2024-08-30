@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://bllxops3rn2iq"]
+
+[ext_resource type="Script" path="res://Levels/stage_27.gd" id="1_701iy"]
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="1_a52fr"]
+[ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_xo7v2"]
+[ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="3_8qnmi"]
+[ext_resource type="PackedScene" uid="uid://dx5rseb71q2oa" path="res://Characters/enemy_donut_boss.tscn" id="4_7tcpx"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gk53p"]
+distance = -531.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ynduk"]
+distance = -501.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cfi7n"]
+distance = -2.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxhuj"]
+distance = -751.0
+
+[node name="Stage_27" type="Node2D"]
+script = ExtResource("1_701iy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -500.0
+offset_right = 2250.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_a52fr")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_xo7v2")]
+
+[node name="Player" parent="." instance=ExtResource("3_8qnmi")]
+modulate = Color(1, 1, 1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.7, 0.7)
+limit_left = -750
+limit_top = -500
+limit_right = 750
+limit_bottom = 500
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-221, 52)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_gk53p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -50)
+shape = SubResource("WorldBoundaryShape2D_ynduk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -500)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_cfi7n")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_qxhuj")
+
+[node name="enemy_donut_boss" parent="." instance=ExtResource("4_7tcpx")]
+position = Vector2(-110, -66)

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpxfxxknqw53k"]
+
+[ext_resource type="Script" path="res://Characters/enemy_speeder.gd" id="1_7ax75"]
+[ext_resource type="PackedScene" uid="uid://cjppr73m1ch13" path="res://Characters/health_bar.tscn" id="2_ntsfb"]
+[ext_resource type="Texture2D" uid="uid://dacwy6vym35wc" path="res://Art/enemy_speeder.png" id="2_w7uts"]
+
+[node name="enemy_speeder" type="CharacterBody2D"]
+script = ExtResource("1_7ax75")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("2_w7uts")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_w7uts")
+
+[node name="HealthBar" parent="." groups=["Enemy"] instance=ExtResource("2_ntsfb")]
+offset_left = -20.0
+offset_right = 20.0
+scale = Vector2(0.8, 0.8)
+
+[node name="HitResetTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[connection signal="timeout" from="HitResetTimer" to="." method="_on_hit_reset_timer_timeout"]

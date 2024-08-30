@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dogsv85qr10qi"]
+
+[ext_resource type="Script" path="res://Characters/enemy_neon_triangle.gd" id="1_fqp4t"]
+[ext_resource type="Texture2D" uid="uid://bhidabkdwilkn" path="res://Art/enemy_neon.png" id="1_rka8p"]
+
+[node name="enemy_neon_triangle" type="CharacterBody2D"]
+script = ExtResource("1_fqp4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_rka8p")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_rka8p")

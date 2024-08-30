@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2uv04e50hjc0"]
+
+[ext_resource type="Texture2D" uid="uid://dkmytjm4xoqm4" path="res://Art/enemy_cubehead.png" id="1_ah657"]
+[ext_resource type="Script" path="res://Characters/enemy_cubehead.gd" id="1_fl4nn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25nd5"]
+atlas = ExtResource("1_ah657")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbp18"]
+atlas = ExtResource("1_ah657")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n34he"]
+atlas = ExtResource("1_ah657")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8l2i"]
+atlas = ExtResource("1_ah657")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6coh"]
+atlas = ExtResource("1_ah657")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eodx"]
+atlas = ExtResource("1_ah657")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjr6x"]
+atlas = ExtResource("1_ah657")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3gil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25nd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbp18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n34he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8l2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6coh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eodx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjr6x")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11tua"]
+size = Vector2(20, 25)
+
+[node name="enemy_cubehead" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_fl4nn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_v3gil")
+animation = &"Walk"
+frame_progress = 0.774314
+
+[node name="Shadow" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.0196078, 0.0196078, 0.0196078, 1)
+sprite_frames = SubResource("SpriteFrames_v3gil")
+animation = &"Walk"
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2.5, 1.25)
+shape = SubResource("RectangleShape2D_11tua")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

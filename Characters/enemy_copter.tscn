@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwtkcnaj3jx1g"]
+
+[ext_resource type="Texture2D" uid="uid://clv7lnsx1kxr0" path="res://Art/enemy_copter_base.png" id="1_25nsy"]
+[ext_resource type="Texture2D" uid="uid://cr12w4tlkp037" path="res://Art/enemy_copter_propeller.png" id="2_pp46j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhg4g"]
+atlas = ExtResource("2_pp46j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rycq"]
+atlas = ExtResource("2_pp46j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uld07"]
+atlas = ExtResource("2_pp46j")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myoj0"]
+atlas = ExtResource("2_pp46j")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wskqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhg4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rycq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uld07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myoj0")
+}],
+"loop": true,
+"name": &"Spin",
+"speed": 12.0
+}]
+
+[node name="enemy_copter" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_25nsy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wskqy")
+animation = &"Spin"
+frame = 3
+frame_progress = 0.524857

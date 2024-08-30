@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://6mlmt6ds1yb1"]
+
+[ext_resource type="Script" path="res://Levels/stage_12.gd" id="1_ujm7n"]
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="1_x7mmp"]
+[ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_7m3fw"]
+[ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="3_ptm3h"]
+[ext_resource type="PackedScene" uid="uid://dsps5m1qyn1f1" path="res://Characters/enemy_fish_2.tscn" id="5_l88cr"]
+[ext_resource type="PackedScene" uid="uid://bv7p6r2587s10" path="res://Characters/enemy_fish.tscn" id="6_tkkdu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_34amg"]
+distance = -531.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a3vyb"]
+distance = -501.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cl74l"]
+distance = -2.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tlna5"]
+distance = -751.0
+
+[sub_resource type="Curve2D" id="Curve2D_oq3m7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -515.36, -274.911, 0, 0, 0, 0, -510.198, 358.578, 0, 0, 0, 0, 605.506, 357.943, 0, 0, 0, 0, 605.506, -278.809, 0, 0, 0, 0, -515.36, -283.154)
+}
+point_count = 5
+
+[node name="Stage_12" type="Node2D"]
+script = ExtResource("1_ujm7n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -500.0
+offset_right = 2250.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_x7mmp")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_7m3fw")]
+
+[node name="Player" parent="." instance=ExtResource("3_ptm3h")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.7, 0.7)
+limit_left = -750
+limit_top = -500
+limit_right = 750
+limit_bottom = 500
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-221, 52)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_34amg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -50)
+shape = SubResource("WorldBoundaryShape2D_a3vyb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -500)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_cl74l")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_tlna5")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-59.1233, -61.4705)
+scale = Vector2(1.35609, 1.57698)
+curve = SubResource("Curve2D_oq3m7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-512.02, 135.027)
+progress = 409.95
+rotates = false
+
+[node name="TankSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="enemy_fish_2" parent="." instance=ExtResource("5_l88cr")]
+position = Vector2(-247, 3)
+
+[node name="enemy_fish" parent="." instance=ExtResource("6_tkkdu")]
+position = Vector2(-165, -9)
+
+[connection signal="timeout" from="TankSpawnTimer" to="." method="_on_tank_spawn_timer_timeout"]

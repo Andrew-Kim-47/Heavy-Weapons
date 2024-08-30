@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://exmy023uftu8"]
+
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="1_blcao"]
+[ext_resource type="Script" path="res://Levels/stage_8.gd" id="1_fhe3v"]
+[ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_a0vow"]
+[ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="3_8jb5q"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k57cf"]
+distance = -531.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_20egd"]
+distance = -501.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u280g"]
+distance = -2.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ghwj3"]
+distance = -751.0
+
+[node name="Stage_8" type="Node2D"]
+script = ExtResource("1_fhe3v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -500.0
+offset_right = 2250.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_blcao")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_a0vow")]
+
+[node name="Player" parent="." instance=ExtResource("3_8jb5q")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.7, 0.7)
+limit_left = -750
+limit_top = -500
+limit_right = 750
+limit_bottom = 500
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-221, 52)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_k57cf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -50)
+shape = SubResource("WorldBoundaryShape2D_20egd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -500)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_u280g")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_ghwj3")
+
+[node name="SpeederSpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpeederSpawnTimer" to="." method="_on_speeder_spawn_timer_timeout"]

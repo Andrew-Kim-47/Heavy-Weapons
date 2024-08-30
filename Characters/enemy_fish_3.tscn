@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clbabhnqe2cvv"]
+
+[ext_resource type="Script" path="res://Characters/enemy_fish_3.gd" id="1_18qeo"]
+[ext_resource type="Texture2D" uid="uid://bqtxq82k54yl8" path="res://Art/enemy_fish.png" id="1_qo4g2"]
+
+[node name="enemy_fish_3" type="CharacterBody2D"]
+script = ExtResource("1_18qeo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qo4g2")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

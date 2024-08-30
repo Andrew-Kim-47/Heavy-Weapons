@@ -25,7 +25,7 @@ offset_right = 20.0
 radius = 19.95
 max_speed = 200.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="HitResetTimer" type="Timer" parent="."]
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -33,6 +33,5 @@ scale = Vector2(0.987862, 1)
 texture = ExtResource("2_l1sbm")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="HitResetTimer" to="." method="_on_hit_reset_timer_timeout"]

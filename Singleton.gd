@@ -5,9 +5,9 @@ var cash = 0
 var total_kills = 0
 var level_kills = 0
 var level_cash = 0
-var weapon1 = "arc_spread"
+var weapon1 = "shot"
 var weapon2 = "ricochet"
-var weapon3 = "duck_death"
+var weapon3 = "slow_time"
 
 
 func collect(amount):

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crnwkru5ocuhp"]
+
+[ext_resource type="Texture2D" uid="uid://t0a5xqoptc2w" path="res://Art/enemy_golfball.png" id="1_bjscj"]
+
+[node name="enemy_golfball" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bjscj")

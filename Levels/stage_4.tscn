@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1gwq80i2tbfm"]
+[gd_scene load_steps=12 format=3 uid="uid://b1gwq80i2tbfm"]
 
 [ext_resource type="Script" path="res://Levels/stage_4.gd" id="1_h483i"]
 [ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="2_m6kgm"]
 [ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_ptnlw"]
 [ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="3_omsp6"]
+[ext_resource type="PackedScene" uid="uid://dpxfxxknqw53k" path="res://Characters/enemy_speeder.tscn" id="5_hvsty"]
+[ext_resource type="PackedScene" uid="uid://d035xiryajsrp" path="res://Characters/enemy_saucer.tscn" id="6_6l0na"]
+[ext_resource type="PackedScene" uid="uid://1qjdrsobvhsn" path="res://Characters/enemy_tank.tscn" id="7_rd8fn"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uu5y0"]
 distance = -531.0
@@ -68,7 +71,19 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_xgep5")
 
 [node name="TieSpawnTimer" type="Timer" parent="."]
-wait_time = 7.591
+wait_time = 7.826
 autostart = true
+
+[node name="enemy_speeder" parent="." instance=ExtResource("5_hvsty")]
+position = Vector2(47, 110)
+
+[node name="enemy_saucer" parent="." instance=ExtResource("6_6l0na")]
+position = Vector2(-124, 170)
+
+[node name="enemy_saucer2" parent="." instance=ExtResource("6_6l0na")]
+position = Vector2(107, 208)
+
+[node name="enemy_tank" parent="." instance=ExtResource("7_rd8fn")]
+position = Vector2(-95, 58)
 
 [connection signal="timeout" from="TieSpawnTimer" to="." method="_on_tie_spawn_timer_timeout"]

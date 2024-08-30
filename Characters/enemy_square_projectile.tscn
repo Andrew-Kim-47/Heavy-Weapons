@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4oqru4q20fbg"]
+
+[ext_resource type="Texture2D" uid="uid://bf4dan2aogaq5" path="res://Art/enemy_boss_projectile.png" id="1_7q7yj"]
+[ext_resource type="Script" path="res://Characters/enemy_square_projectile.gd" id="1_iibbw"]
+
+[sub_resource type="Curve2D" id="Curve2D_om7do"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 70, 0, -21.2132, 0, 21.2132, 0, 100, 15, 0.227406, 0, -0.227406, 0, 130, 0, -24.5407, -0.471937, 24.5407, 0.471937, 160, 15, 3.37119, 0, -3.37119, 0, 190, 0, -16.7538, -0.471937, 16.7538, 0.471937, 220, 15, 5.05413, 0, -5.05413, 0, 250, 0, -15.1624, -0.297302, 15.1624, 0.297302, 280, 15, 6.24334, 0, -6.24334, 0, 310, 0, -13.3786, 0, 13.3786, 0, 340, 15, 4.45953, -0.297302, -4.45953, 0.297302, 370, 0, -13.5442, -0.31498, 13.5442, 0.31498, 400, 15, -3.46478, 0, 3.46478, 0, 430, 0, 0, 0, 0, 0, 435, -4, 0, 0, 0, 0, 430, -8)
+}
+point_count = 15
+
+[node name="enemy_square_projectile" type="Area2D"]
+script = ExtResource("1_iibbw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_7q7yj")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-70, 0)
+curve = SubResource("Curve2D_om7do")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(70, 0)
+rotation = 0.463648

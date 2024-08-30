@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmoa8no0dll6w"]
+
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="1_5fds1"]
+[ext_resource type="Script" path="res://Levels/stage_13.gd" id="1_t43qn"]
+[ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_nmvl1"]
+[ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="3_qtagb"]
+[ext_resource type="PackedScene" uid="uid://cdu2kqu5ycwho" path="res://Characters/spawner.tscn" id="4_buiaa"]
+[ext_resource type="PackedScene" uid="uid://d1cueot54ityp" path="res://Characters/enemy_germ.tscn" id="6_ho0fc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_evnql"]
+distance = -531.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qk75e"]
+distance = -501.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wosjb"]
+distance = -2.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_22sn1"]
+distance = -751.0
+
+[sub_resource type="Curve2D" id="Curve2D_8wrok"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -515.36, -274.911, 0, 0, 0, 0, -510.198, 358.578, 0, 0, 0, 0, 605.506, 357.943, 0, 0, 0, 0, 605.506, -278.809, 0, 0, 0, 0, -515.36, -283.154)
+}
+point_count = 5
+
+[node name="Stage_13" type="Node2D"]
+script = ExtResource("1_t43qn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -500.0
+offset_right = 2250.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_5fds1")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_nmvl1")]
+
+[node name="Player" parent="." instance=ExtResource("3_qtagb")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.7, 0.7)
+limit_left = -750
+limit_top = -500
+limit_right = 750
+limit_bottom = 500
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-221, 52)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_evnql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -50)
+shape = SubResource("WorldBoundaryShape2D_qk75e")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -500)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_wosjb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_22sn1")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-59.1233, -61.4705)
+scale = Vector2(1.35609, 1.57698)
+curve = SubResource("Curve2D_8wrok")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-512.02, 135.027)
+progress = 409.95
+rotates = false
+
+[node name="Spawner" parent="." instance=ExtResource("4_buiaa")]
+position = Vector2(0, -205)
+
+[node name="Spawner2" parent="." instance=ExtResource("4_buiaa")]
+position = Vector2(-231, 3)
+
+[node name="Spawner3" parent="." instance=ExtResource("4_buiaa")]
+position = Vector2(1, 181)
+
+[node name="Spawner4" parent="." instance=ExtResource("4_buiaa")]
+position = Vector2(212, 2)
+
+[node name="enemy_germ" parent="." instance=ExtResource("6_ho0fc")]
+position = Vector2(-96, 55)

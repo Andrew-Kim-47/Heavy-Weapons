@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmwuv5u01qw7q"]
+[gd_scene load_steps=11 format=3 uid="uid://dmwuv5u01qw7q"]
 
 [ext_resource type="Script" path="res://Levels/stage_5.gd" id="1_mkj03"]
 [ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_b14ha"]
 [ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="2_t8oc6"]
 [ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="3_gla3r"]
 [ext_resource type="PackedScene" uid="uid://tx1c58k3cefi" path="res://Characters/enemy_crab.tscn" id="5_w26qh"]
+[ext_resource type="PackedScene" uid="uid://cjbrhedi0ni5i" path="res://Characters/turret.tscn" id="6_sjeh3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lh7cb"]
 distance = -531.0
@@ -72,6 +73,10 @@ shape = SubResource("WorldBoundaryShape2D_rc338")
 position = Vector2(71, 88)
 
 [node name="CrabSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
+
+[node name="Turret" parent="." instance=ExtResource("6_sjeh3")]
+position = Vector2(-70, 86)
 
 [connection signal="timeout" from="CrabSpawnTimer" to="." method="_on_crab_spawn_timer_timeout"]

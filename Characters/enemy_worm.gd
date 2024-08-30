@@ -1,11 +1,9 @@
 extends Enemy
 
 
-const SPEED = 50
-
-
 
 func _ready():
+	speed = 50
 	health = 300
 	$HealthBar.max_value = 200
 
@@ -15,7 +13,7 @@ func _physics_process(delta):
 	$AnimatedSprite2D.play("Move")
 	$Shadow.play("Move")
 	var direction = Vector2.UP.rotated(rotation)
-	position += direction * SPEED * delta
+	position += direction * speed * delta
 
 
 

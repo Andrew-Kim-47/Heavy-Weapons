@@ -35,10 +35,10 @@ func _process(delta):
 		shortest_distance = 1280
 
 func _on_spawn_timer_timeout():
-	spawn_enemy("res://Characters/enemy.tscn")
+	spawn_enemy("res://Characters/enemy.tscn", 4, 6, 0.5)
 	
 	
-func spawn_enemy(enemy_type):
+func spawn_enemy(enemy_type, min_spawns, max_spawns, time_between):
 	var player_position = player.position
 	var portal = load("res://Animations/portal.tscn").instantiate()
 	var randx = randf_range(-get_viewport_rect().size[0] / 2, get_viewport_rect().size[0] / 2)
@@ -49,11 +49,11 @@ func spawn_enemy(enemy_type):
 	portal.position = new_pos
 	add_child(portal)
 	await get_tree().create_timer(1).timeout
-	for n in randi_range(4,6):
+	for n in randi_range(min_spawns, max_spawns):
 		var enemy = load(enemy_type).instantiate()
 		enemy.position = new_pos
 		add_child(enemy)
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(time_between).timeout
 	portal.shrink()
 	
 func kill_enemy():

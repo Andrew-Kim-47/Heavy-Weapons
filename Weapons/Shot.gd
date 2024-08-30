@@ -1,6 +1,6 @@
 class_name Weapon extends Area2D
 
-@export var speed = 700
+var speed = 700
 @export var damage = 75
 
 @onready var map = get_parent()

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbo1cpimcxpbu"]
+
+[ext_resource type="Script" path="res://Characters/enemy_straight.gd" id="1_783p3"]
+[ext_resource type="Texture2D" uid="uid://ch4c4croqccbu" path="res://Art/enemy.png" id="1_sfpjf"]
+[ext_resource type="PackedScene" uid="uid://cjppr73m1ch13" path="res://Characters/health_bar.tscn" id="2_p5nv4"]
+
+[node name="enemy_straight" type="CharacterBody2D"]
+script = ExtResource("1_783p3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("1_sfpjf")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-10, -10, 10, 0, -10, 10)
+
+[node name="HealthBar" parent="." groups=["Enemy_health"] instance=ExtResource("2_p5nv4")]
+offset_left = -20.0
+offset_right = 20.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 19.95
+max_speed = 200.0
+
+[node name="AdjustDirectionTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-12, 0)
+scale = Vector2(0.987862, 1)
+texture = ExtResource("1_sfpjf")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="AdjustDirectionTimer" to="." method="_on_adjust_direction_timer_timeout"]

@@ -13,10 +13,11 @@ var player_position
 var damage = 15
 signal health_changed
 
-var time = 0
 var radius
 var rand_angle = randi_range(0,360)
 var just_hit = false
+
+var max_turn_angle = PI * 0.01
 
 func _ready():
 	radius = position.distance_to(player.position) / 2
@@ -27,42 +28,20 @@ func _ready():
 func _physics_process(delta):
 	$Shadow.global_position = global_position + Vector2(0, 15)
 	$Shadow.rotation = 0
-	#velocity = (player.position - position).normalized() * speed
-	#move_and_slide()
-	#look_at(player.position)
 	
-	#var dir = to_local(nav.get_next_path_position()).normalized()
-	#nav.set_velocity(dir * speed)
-	#move_and_slide()
-	#$Sprite2D.rotation = velocity.angle()
-	if position.distance_to(player.position) < 5:
-		just_hit = true
-		$Timer.start()
-		time = 0
+	#if position.distance_to(player.position) < 5:
+		#just_hit = true
+		#$HitResetTimer.start()
 	if !just_hit:
-		var target = player.position - position 
-		var ang = target.angle()
-		var d = PI * 0.01
-		ang = lerp_angle(rotation, ang, 1)
-		ang = clamp(ang, rotation - d, rotation + d)
-		velocity = Vector2.from_angle(ang) * speed
-		rotation = ang
-		#var next_pos = bezier(time)
-		#look_at(next_pos)
-		#velocity = position.direction_to(next_pos) * speed
-		#time += delta * 0.3
-		#if time > 1:
-			#time = 1
+		var target_direction = player.position - position 
+		var angle = target_direction.angle()
+		angle = lerp_angle(rotation, angle, 1)
+		angle = clamp(angle, rotation - max_turn_angle, rotation + max_turn_angle)
+		velocity = Vector2.from_angle(angle) * speed
+		rotation = angle
 		
 	move_and_slide()
 	
-	
-func bezier(t):
-	var p1 = Vector2(position.x + radius * cos(deg_to_rad(rand_angle)) , position.y + radius * sin(deg_to_rad(rand_angle)))
-	var q0 = position.lerp(p1, t)
-	var q1 = p1.lerp(player.position, t)
-	var r = q0.lerp(q1, t)
-	return r
 	
 
 func take_damage(damage):
@@ -72,8 +51,8 @@ func take_damage(damage):
 	if health <= 0:
 		if map.is_ending:
 			drop.worth *= 2
-		drop.position = position
-		explosion.position = position
+		drop.global_position = $Sprite2D.global_position
+		explosion.global_position = $Sprite2D.global_position
 		get_parent().add_child(drop)
 		get_parent().add_child(explosion)
 		get_parent().kill_enemy()
@@ -93,15 +72,5 @@ func _on_area_2d_area_entered(area):
 		area.hit(max_health)
 
 
-func _on_navigation_agent_2d_velocity_computed(safe_velocity):
-	velocity = safe_velocity
-	move_and_slide()
-	$Sprite2D.rotation = velocity.angle()
-	
-
-
-func _on_timer_timeout():
-	nav.target_position = player.global_position
+func _on_hit_reset_timer_timeout():
 	just_hit = false
-	radius = position.distance_to(player.position) / 2
-	rand_angle = randi_range(0,360)

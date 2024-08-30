@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://b6nuppjc1di1m"]
+
+[ext_resource type="Script" path="res://Levels/stage_6.gd" id="1_hfj0x"]
+[ext_resource type="Texture2D" uid="uid://6igewcmoc4lg" path="res://Art/background.png" id="1_j6tjx"]
+[ext_resource type="PackedScene" uid="uid://ssaw34y4v1lr" path="res://Levels/HUD.tscn" id="2_1dly2"]
+[ext_resource type="PackedScene" uid="uid://1bk8eq6w84q3" path="res://Characters/Player.tscn" id="3_h6elf"]
+[ext_resource type="PackedScene" uid="uid://cjbrhedi0ni5i" path="res://Characters/turret.tscn" id="4_j1o68"]
+[ext_resource type="PackedScene" uid="uid://bbo1cpimcxpbu" path="res://Characters/enemy_straight.tscn" id="6_ikqs8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8sptd"]
+distance = -531.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4f6wy"]
+distance = -501.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8wul2"]
+distance = -2.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s5xsp"]
+distance = -751.0
+
+[sub_resource type="Curve2D" id="Curve2D_1eg3b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -515.36, -274.911, 0, 0, 0, 0, -510.198, 358.578, 0, 0, 0, 0, 605.506, 357.943, 0, 0, 0, 0, 605.506, -278.809, 0, 0, 0, 0, -515.36, -283.154)
+}
+point_count = 5
+
+[node name="Stage_6" type="Node2D"]
+script = ExtResource("1_hfj0x")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -500.0
+offset_right = 2250.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_j6tjx")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_1dly2")]
+
+[node name="Player" parent="." instance=ExtResource("3_h6elf")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.7, 0.7)
+limit_left = -750
+limit_top = -500
+limit_right = 750
+limit_bottom = 500
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-221, 52)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_8sptd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -50)
+shape = SubResource("WorldBoundaryShape2D_4f6wy")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -500)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_8wul2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_s5xsp")
+
+[node name="Turret" parent="." instance=ExtResource("4_j1o68")]
+position = Vector2(-190, -175)
+
+[node name="Turret2" parent="." instance=ExtResource("4_j1o68")]
+position = Vector2(190, 175)
+
+[node name="Turret3" parent="." instance=ExtResource("4_j1o68")]
+position = Vector2(-190, 175)
+
+[node name="Turret4" parent="." instance=ExtResource("4_j1o68")]
+position = Vector2(190, -175)
+
+[node name="WormSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-59.1233, -61.4705)
+scale = Vector2(1.35609, 1.57698)
+curve = SubResource("Curve2D_1eg3b")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(49.8006, -280.963)
+progress = 2941.68
+rotates = false
+
+[node name="enemy_straight" parent="." instance=ExtResource("6_ikqs8")]
+position = Vector2(-132, 79)
+
+[connection signal="timeout" from="WormSpawnTimer" to="." method="_on_worm_spawn_timer_timeout"]
